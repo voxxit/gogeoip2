@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"log"
 	"net"
+	"net/http"
+	"os"
 
 	"github.com/voxxit/gogeoip2/Godeps/_workspace/src/github.com/gin-gonic/gin"
 	"github.com/voxxit/gogeoip2/Godeps/_workspace/src/github.com/oschwald/geoip2-golang"
@@ -41,7 +43,7 @@ func lookupIP(db *geoip2.Reader, addr string) ([]byte, error) {
 }
 
 func main() {
-        port := os.Getenv("PORT")
+	port := os.Getenv("PORT")
 
 	if port == "" {
 		log.Fatal("$PORT must be set")
