@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net"
 	"net/http"
@@ -13,10 +14,11 @@ import (
 
 // IPAddrResponse ...
 type IPAddrResponse struct {
-	ASNum uint   `json:"asnum,omitempty"`
-	ASOrg string `json:"asorg,omitempty"`
-	ISP   string `json:"isp,omitempty"`
-	Org   string `json:"org,omitempty"`
+	ASNum      uint   `json:"asnum,omitempty"`
+	ASOrg      string `json:"asorg,omitempty"`
+	ISP        string `json:"isp,omitempty"`
+	Org        string `json:"org,omitempty"`
+	CIDRReport string `json:"cidr-report"`
 }
 
 func lookupIP(db *geoip2.Reader, addr string) ([]byte, error) {
@@ -32,6 +34,10 @@ func lookupIP(db *geoip2.Reader, addr string) ([]byte, error) {
 		ASOrg: record.AutonomousSystemOrganization,
 		ISP:   record.ISP,
 		Org:   record.Organization,
+		CIDRReport: fmt.Sprintf(
+			"http://www.cidr-report.org/cgi-bin/as-report?as=AS%d&view=2.0",
+			record.AutonomousSystemNumber,
+		),
 	}
 
 	b, err := json.Marshal(&resp)
