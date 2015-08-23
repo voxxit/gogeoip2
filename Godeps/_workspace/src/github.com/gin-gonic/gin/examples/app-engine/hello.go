@@ -1,7 +1,7 @@
 package hello
 
 import (
-	"git.heroku.com/gogeoip2/Godeps/_workspace/src/github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin"
 	"net/http"
 )
 

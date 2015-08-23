@@ -5,7 +5,7 @@ import (
 	"log"
 	"net"
 
-	"git.heroku.com/gogeoip2/Godeps/_workspace/src/github.com/oschwald/maxminddb-golang"
+	"github.com/oschwald/maxminddb-golang"
 )
 
 type onlyCountry struct {

@@ -1,1 +1,1 @@
-web: gogeoip2
+web: ./gogeoip2

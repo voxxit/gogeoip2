@@ -12,10 +12,10 @@ import (
 	"strings"
 	"time"
 
-	"git.heroku.com/gogeoip2/Godeps/_workspace/src/github.com/gin-gonic/gin/binding"
-	"git.heroku.com/gogeoip2/Godeps/_workspace/src/github.com/gin-gonic/gin/render"
-	"git.heroku.com/gogeoip2/Godeps/_workspace/src/github.com/manucorporat/sse"
-	"git.heroku.com/gogeoip2/Godeps/_workspace/src/golang.org/x/net/context"
+	"github.com/gin-gonic/gin/binding"
+	"github.com/gin-gonic/gin/render"
+	"github.com/manucorporat/sse"
+	"golang.org/x/net/context"
 )
 
 // Content-Type MIME of the most common data formats

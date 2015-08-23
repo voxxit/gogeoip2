@@ -9,7 +9,7 @@ import (
 
 	"testing"
 
-	"git.heroku.com/gogeoip2/Godeps/_workspace/src/github.com/manucorporat/sse"
+	"github.com/manucorporat/sse"
 	"github.com/stretchr/testify/assert"
 )
 

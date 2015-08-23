@@ -1,9 +1,6 @@
 {
 	"ImportPath": "git.heroku.com/gogeoip2",
 	"GoVersion": "go1.5",
-	"Packages": [
-		"./..."
-	],
 	"Deps": [
 		{
 			"ImportPath": "github.com/gin-gonic/gin",

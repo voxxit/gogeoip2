@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"time"
 
-	"git.heroku.com/gogeoip2/Godeps/_workspace/src/golang.org/x/net/context"
+	"golang.org/x/net/context"
 )
 
 func ExampleWithTimeout() {
