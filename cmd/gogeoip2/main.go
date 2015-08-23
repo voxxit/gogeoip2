@@ -41,6 +41,12 @@ func lookupIP(db *geoip2.Reader, addr string) ([]byte, error) {
 }
 
 func main() {
+        port := os.Getenv("PORT")
+
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
+
 	db, err := geoip2.Open("GeoIP2-ISP.mmdb")
 	if err != nil {
 		log.Fatal(err)
@@ -48,16 +54,17 @@ func main() {
 
 	defer db.Close()
 
-	r := gin.Default()
+	router := gin.New()
+	router.Use(gin.Logger())
 
-	r.GET("/ip/:addr", func(c *gin.Context) {
+	router.GET("/ip/:addr", func(c *gin.Context) {
 		json, err := lookupIP(db, c.Param("addr"))
 		if err != nil {
 			c.Error(err)
 		}
 
-		c.Data(200, "application/json", json)
+		c.Data(http.StatusOK, "application/json", json)
 	})
 
-	r.Run(":8081") // listen and serve on 0.0.0.0:8080
+	router.Run(":" + port)
 }
