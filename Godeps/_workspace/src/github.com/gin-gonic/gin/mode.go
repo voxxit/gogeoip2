@@ -9,7 +9,7 @@ import (
 	"os"
 
 	"git.heroku.com/gogeoip2/Godeps/_workspace/src/github.com/gin-gonic/gin/binding"
-	"github.com/mattn/go-colorable"
+	"git.heroku.com/gogeoip2/Godeps/_workspace/src/github.com/mattn/go-colorable"
 )
 
 const ENV_GIN_MODE = "GIN_MODE"

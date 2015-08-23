@@ -11,9 +11,31 @@
 			"Rev": "704d690ac0e25fcd060ff82f75f913e879e65a3c"
 		},
 		{
+			"ImportPath": "github.com/manucorporat/sse",
+			"Rev": "fe6ea2c8e398672518ef204bf0fbd9af858d0e15"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-colorable",
+			"Rev": "40e4aedc8fabf8c23e040057540867186712faa5"
+		},
+		{
 			"ImportPath": "github.com/oschwald/geoip2-golang",
 			"Comment": "v0.1.0-16-g7a2fbad",
 			"Rev": "7a2fbad473dfb452807e42a9bf861b433e5f468b"
+		},
+		{
+			"ImportPath": "github.com/oschwald/maxminddb-golang",
+			"Comment": "v0.2.0-32-g156dfbd",
+			"Rev": "156dfbdff06f8a5b4b32d8bcc9f63d13a6c5f8f5"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "66f0418ca41253f8d1a024eb9754e9441a8e79b9"
+		},
+		{
+			"ImportPath": "gopkg.in/bluesuncorp/validator.v5",
+			"Comment": "v5.11",
+			"Rev": "98121ac23ff3d764f525d18d8de944d150e3c0fe"
 		}
 	]
 }
