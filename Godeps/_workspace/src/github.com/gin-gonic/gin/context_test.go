@@ -14,8 +14,8 @@ import (
 	"testing"
 	"time"
 
+	"github.com/manucorporat/sse"
 	"github.com/stretchr/testify/assert"
-	"github.com/voxxit/gogeoip2/Godeps/_workspace/src/github.com/manucorporat/sse"
 )
 
 // Unit tests TODO

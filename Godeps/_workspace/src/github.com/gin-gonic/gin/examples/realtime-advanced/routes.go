@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/voxxit/gogeoip2/Godeps/_workspace/src/github.com/gin-gonic/gin"
+	"git.heroku.com/gogeoip2/Godeps/_workspace/src/github.com/gin-gonic/gin"
 )
 
 func rateLimit(c *gin.Context) {

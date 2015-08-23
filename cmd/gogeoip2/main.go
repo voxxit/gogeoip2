@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/voxxit/gogeoip2/Godeps/_workspace/src/github.com/gin-gonic/gin"
-	"github.com/voxxit/gogeoip2/Godeps/_workspace/src/github.com/oschwald/geoip2-golang"
+	"git.heroku.com/gogeoip2/Godeps/_workspace/src/github.com/gin-gonic/gin"
+	"git.heroku.com/gogeoip2/Godeps/_workspace/src/github.com/oschwald/geoip2-golang"
 )
 
 // IPAddrResponse ...

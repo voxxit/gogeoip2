@@ -11,7 +11,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/voxxit/gogeoip2/Godeps/_workspace/src/github.com/gin-gonic/gin/render"
+	"git.heroku.com/gogeoip2/Godeps/_workspace/src/github.com/gin-gonic/gin/render"
 )
 
 // Framework's version
