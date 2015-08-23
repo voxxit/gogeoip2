@@ -49,7 +49,7 @@ func main() {
 		log.Fatal("$PORT must be set")
 	}
 
-	db, err := geoip2.Open("GeoIP2-ISP.mmdb")
+	db, err := geoip2.Open("cmd/gogeoip2/GeoIP2-ISP.mmdb")
 	if err != nil {
 		log.Fatal(err)
 	}
