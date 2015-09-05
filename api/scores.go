@@ -1,7 +1,5 @@
 package api
 
-import "log"
-
 type ScoresInput struct {
 	Distance    float64
 	CountryCode string
@@ -35,11 +33,11 @@ func (s *Scores) calculateCountryScore(isoCountry string) {
 		s.Country = 0
 	}
 
-	log.Printf("[scores] Country: %f\n", s.Country)
+	// log.Printf("[scores] Country: %f\n", s.Country)
 }
 
 func (s *Scores) calculateDistanceScore(distance float64) {
 	s.Distance = distance / 24901.0
 
-	log.Printf("[scores] Distance: %f\n", s.Distance)
+	// log.Printf("[scores] Distance: %f\n", s.Distance)
 }

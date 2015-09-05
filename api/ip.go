@@ -5,8 +5,6 @@ import (
 	"net"
 )
 
-var db *IPDatabase
-
 type IPConfig struct {
 	Addr             string
 	RequestLatitude  string
@@ -35,20 +33,15 @@ type IP struct {
 	PeeringDBReport string   `json:"peering-db-report"`
 }
 
-func LookupIP(config *IPConfig) (*IP, error) {
-	db = OpenDatabases()
-
-	defer db.isp.Close()
-	defer db.city.Close()
-
+func LookupIP(db *IPDatabase, config *IPConfig) (*IP, error) {
 	parsedIP := net.ParseIP(config.Addr)
 
-	record, err := db.isp.ISP(parsedIP)
+	record, err := db.Isp.ISP(parsedIP)
 	if err != nil {
 		return nil, err
 	}
 
-	location, err := db.city.City(parsedIP)
+	location, err := db.City.City(parsedIP)
 	if err != nil {
 		return nil, err
 	}

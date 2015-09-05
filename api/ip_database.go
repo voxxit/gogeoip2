@@ -7,8 +7,8 @@ import (
 )
 
 type IPDatabase struct {
-	isp  *geoip2.Reader
-	city *geoip2.Reader
+	Isp  *geoip2.Reader
+	City *geoip2.Reader
 }
 
 func OpenDatabases() *IPDatabase {
@@ -24,8 +24,8 @@ func OpenDatabases() *IPDatabase {
 		log.Fatal(err)
 	}
 
-	db.isp = isp
-	db.city = city
+	db.Isp = isp
+	db.City = city
 
 	return db
 }
