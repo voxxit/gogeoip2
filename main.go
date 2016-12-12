@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"os"
 
-	"gitlab.com/voxxit/gogeoip2/api"
-	"gitlab.com/voxxit/gogeoip2/ingest"
+	"github.com/voxxit/gogeoip2/api"
+	"github.com/voxxit/gogeoip2/ingest"
 
 	"github.com/codegangsta/cli"
 	"github.com/gin-gonic/gin"

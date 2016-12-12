@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"gitlab.com/voxxit/gogeoip2/api"
+	"github.com/voxxit/gogeoip2/api"
 
 	"github.com/codegangsta/cli"
 )
