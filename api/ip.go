@@ -2,6 +2,7 @@ package api
 
 import (
 	"fmt"
+	"log"
 	"net"
 )
 
@@ -13,7 +14,6 @@ type IPConfig struct {
 
 type IP struct {
 	IP              string   `json:"ip"`
-	Scores          *Scores  `json:"scores"`
 	ASNum           uint     `json:"asnum,omitempty"`
 	City            string   `json:"city"`
 	Country         string   `json:"country"`
@@ -48,20 +48,17 @@ func LookupIP(db *IPDatabase, config *IPConfig) (*IP, error) {
 
 	hostnames, _ := net.LookupAddr(config.Addr)
 
-	distance := distanceTo(
+	distance, err := distanceTo(
 		location.Location.Latitude,
 		location.Location.Longitude,
 		config.RequestLatitude,
 		config.RequestLongitude,
 	)
-
-	scores := NewScores(&ScoresInput{
-		Distance:    distance,
-		CountryCode: location.Country.IsoCode,
-	})
+	if err != nil {
+		log.Println("Distance could not be calculated")
+	}
 
 	ip := &IP{
-		Scores:     scores,
 		Latitude:   location.Location.Latitude,
 		Longitude:  location.Location.Longitude,
 		IP:         config.Addr,

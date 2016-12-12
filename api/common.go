@@ -1,7 +1,6 @@
 package api
 
 import (
-	"log"
 	"strconv"
 
 	"github.com/kellydunn/golang-geo"
@@ -17,21 +16,20 @@ var (
 	}
 )
 
-func distanceTo(lat1 float64, lng1 float64, lat2 string, lng2 string) float64 {
+func distanceTo(lat1 float64, lng1 float64, lat2 string, lng2 string) (float64, error) {
 	ipGeoPoint := geo.NewPoint(lat1, lng1)
 
 	parsedLat, err := strconv.ParseFloat(lat2, 64)
 	if err != nil {
-		log.Fatal(err)
+		return float64(0.0), err
 	}
 
 	parsedLng, err := strconv.ParseFloat(lng2, 64)
 	if err != nil {
-		log.Fatal(err)
+		return float64(0.0), err
 	}
 
 	lookupGeoPoint := geo.NewPoint(parsedLat, parsedLng)
 
-	return ipGeoPoint.GreatCircleDistance(lookupGeoPoint)
-
+	return float64(ipGeoPoint.GreatCircleDistance(lookupGeoPoint)), nil
 }
