@@ -27,19 +27,14 @@ type IP struct {
 	ASOrg           string   `json:"asorg,omitempty"`
 	ISP             string   `json:"isp,omitempty"`
 	Org             string   `json:"org,omitempty"`
-	CIDRReport      string   `json:"cidr-report"`
-	CleanTalkReport string   `json:"cleantalk-report"`
-	IPInfoReport    string   `json:"ipinfo-report"`
-	PeeringDBReport string   `json:"peering-db-report"`
+	CIDRReport      string   `json:"cidr-report,omitempty"`
+	CleanTalkReport string   `json:"cleantalk-report,omitempty"`
+	IPInfoReport    string   `json:"ipinfo-report,omitempty"`
+	PeeringDBReport string   `json:"peering-db-report,omitempty"`
 }
 
 func LookupIP(db *IPDatabase, config *IPConfig) (*IP, error) {
 	parsedIP := net.ParseIP(config.Addr)
-
-	record, err := db.Isp.ISP(parsedIP)
-	if err != nil {
-		return nil, err
-	}
 
 	location, err := db.City.City(parsedIP)
 	if err != nil {
@@ -69,26 +64,38 @@ func LookupIP(db *IPDatabase, config *IPConfig) (*IP, error) {
 		CountryISO: location.Country.IsoCode,
 		Continent:  location.Continent.Code,
 		Hostnames:  hostnames,
-		ASNum:      record.AutonomousSystemNumber,
-		ASOrg:      record.AutonomousSystemOrganization,
-		ISP:        record.ISP,
-		Org:        record.Organization,
-		CIDRReport: fmt.Sprintf(
+	}
+
+	if db.Isp != nil {
+		record, err := db.Isp.ISP(parsedIP)
+		if err != nil {
+			return nil, err
+		}
+
+		ip.ASNum = record.AutonomousSystemNumber
+		ip.ASOrg = record.AutonomousSystemOrganization
+		ip.ISP = record.ISP
+		ip.Org = record.Organization
+
+		ip.CIDRReport = fmt.Sprintf(
 			"http://www.cidr-report.org/cgi-bin/as-report?as=AS%d&view=2.0",
 			record.AutonomousSystemNumber,
-		),
-		CleanTalkReport: fmt.Sprintf(
+		)
+
+		ip.CleanTalkReport = fmt.Sprintf(
 			"https://cleantalk.org/blacklists/AS%d",
 			record.AutonomousSystemNumber,
-		),
-		IPInfoReport: fmt.Sprintf(
+		)
+
+		ip.IPInfoReport = fmt.Sprintf(
 			"http://ipinfo.io/AS%d",
 			record.AutonomousSystemNumber,
-		),
-		PeeringDBReport: fmt.Sprintf(
-			"https://beta.peeringdb.com/api/asn/%d",
+		)
+
+		ip.PeeringDBReport = fmt.Sprintf(
+			"https://beta.peeringdb.com/api/net?asn=%d",
 			record.AutonomousSystemNumber,
-		),
+		)
 	}
 
 	return ip, nil

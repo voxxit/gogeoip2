@@ -34,8 +34,10 @@ func ipLookupHandler(db *api.IPDatabase, c *gin.Context) {
 func main() {
 	db := api.OpenDatabases()
 
-	defer db.Isp.Close()
 	defer db.City.Close()
+	if db.Isp != nil {
+		defer db.Isp.Close()
+	}
 
 	app := cli.NewApp()
 	app.Name = "gogeoip2"
